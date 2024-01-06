@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "test-rn-yoripe",
-    "slug": "test-rn-yoripe",
-    "version": "1.0.0",
+    "name": "rn-whatsapp-clone",
+    "slug": "rn-whatsapp-clone",
+    "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
