@@ -10,7 +10,7 @@ const OnboardingPage = () => {
   const navigation = useNavigation();
   useEffect(function autoNavigate() {
     setTimeout(() => {
-      navigation.navigate("Login");
+      navigation.navigate("Home");
     }, 500);
   }, []);
 
