@@ -1,9 +1,9 @@
 import { myColors } from "@/assets/themes";
 import { Typography } from "@/components";
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
 interface HeaderHomeProps {}
 

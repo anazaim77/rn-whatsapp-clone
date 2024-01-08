@@ -1,18 +1,32 @@
+import { illustrationsCollection } from "@/assets/images";
+import { myColors } from "@/assets/themes";
+import { StyleUtils } from "@/utils";
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Image, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-interface NotFoundPageProps {}
-
-const NotFoundPage = (props: NotFoundPageProps) => {
+const NotFoundPage = () => {
   return (
-    <View style={styles.container}>
-      <Text>NotFoundPage</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Image
+        source={illustrationsCollection.underDevelopment}
+        style={styles.image}
+      />
+    </SafeAreaView>
   );
 };
 
 export default NotFoundPage;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: myColors.neutral.N0,
+  },
+  image: {
+    width: StyleUtils.widthScreen,
+    resizeMode: "contain",
+  },
 });
