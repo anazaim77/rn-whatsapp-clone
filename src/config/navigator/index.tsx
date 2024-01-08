@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList } from "./types";
-import { HomePage, LoginPage } from "@/pages";
+import { HomePage, LoginPage, OnboardingPage } from "@/pages";
 import NotFoundPage from "@/pages/NotFoundPage";
 
 export default function Navigation() {
@@ -17,6 +17,11 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="Onboarding"
+        component={OnboardingPage}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Login"
         component={LoginPage}
