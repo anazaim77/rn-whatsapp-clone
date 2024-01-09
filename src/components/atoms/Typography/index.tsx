@@ -11,6 +11,8 @@ import {
 interface TypographyProps {
   children: React.ReactNode;
   fontSize?:
+    | 6
+    | 7
     | 8
     | 10
     | 12
@@ -34,9 +36,9 @@ interface TypographyProps {
 
 const Typography = ({
   children,
-  fontSize = 14,
+  fontSize = 13,
   style,
-  fontWeight = "bold",
+  fontWeight = "regular",
   color = myColors.neutral.N900,
 }: TypographyProps) => {
   const customStyle = useMemo(

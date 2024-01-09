@@ -1,5 +1,6 @@
 import { myColors } from "@/assets/themes";
-import { Badge, Typography } from "@/components";
+import { Badge, StatusIcon, Typography } from "@/components";
+import { StatusType } from "@/components/atoms/StatusIcon";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React, { useMemo } from "react";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
@@ -7,7 +8,7 @@ import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 interface ChatItemProps {
   name: string;
   message?: string;
-  status?: "read" | "unread" | "sent" | "delivered" | string;
+  status?: StatusType;
   totalUnread?: number;
   time?: string;
   urlImage?: string;
@@ -23,23 +24,6 @@ const ChatItem = ({
   totalUnread,
   onPress,
 }: ChatItemProps) => {
-  const messageStatusProps = useMemo<{
-    name: "checkmark-outline" | "checkmark-done-outline";
-  }>(() => {
-    switch (status) {
-      case "unread":
-        return { name: "checkmark-outline", size: 0 };
-      case "sent":
-        return { name: "checkmark-outline" };
-      case "delivered":
-        return { name: "checkmark-done-outline" };
-      case "read":
-        return { name: "checkmark-done-outline", color: "#39AACC" };
-
-      default:
-        return { name: "checkmark-outline", size: 0 };
-    }
-  }, [status]);
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <View style={styles.container}>
@@ -60,11 +44,7 @@ const ChatItem = ({
           </View>
           <View style={styles.nameBox}>
             <View style={styles.messageBox}>
-              <Ionicons
-                size={20}
-                color={myColors.neutral.N500}
-                {...messageStatusProps}
-              />
+              <StatusIcon size="medium" status={status} />
               <Typography fontSize={13} color={myColors.neutral.N300}>
                 {message}
               </Typography>
