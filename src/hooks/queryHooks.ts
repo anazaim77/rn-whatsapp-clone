@@ -2,7 +2,7 @@ import { ApiEndpoint, QueryKeys } from "@/constants";
 import { ApiRequestUtils } from "@/utils";
 import { useQuery } from "react-query";
 
-export interface ResponseChats {
+export interface ChatModel {
   name: string;
   image_url: string;
   status: string;
@@ -13,5 +13,5 @@ export interface ResponseChats {
 
 export const useGetChats = () =>
   useQuery(QueryKeys.GET_CHATS, () =>
-    ApiRequestUtils.get<Array<ResponseChats>>(ApiEndpoint.CHATS)
+    ApiRequestUtils.get<Array<ChatModel>>(ApiEndpoint.CHATS)
   );

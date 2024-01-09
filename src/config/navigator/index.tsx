@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList } from "./types";
-import { HomePage, LoginPage, OnboardingPage } from "@/pages";
+import { ChatRoomPage, HomePage, LoginPage, OnboardingPage } from "@/pages";
 import NotFoundPage from "@/pages/NotFoundPage";
 import { QueryClientProvider } from "react-query";
 import { reactQueryClient } from "../services/QueryClient";
@@ -34,6 +34,11 @@ function RootNavigator() {
       <Stack.Screen
         name="Home"
         component={HomePage}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ChatRoom"
+        component={ChatRoomPage}
         options={{ headerShown: false }}
       />
       <Stack.Screen

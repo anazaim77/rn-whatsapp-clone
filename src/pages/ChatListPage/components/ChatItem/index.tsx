@@ -11,6 +11,7 @@ interface ChatItemProps {
   totalUnread?: number;
   time?: string;
   urlImage?: string;
+  onPress?: () => void;
 }
 
 const ChatItem = ({
@@ -20,6 +21,7 @@ const ChatItem = ({
   time,
   urlImage,
   totalUnread,
+  onPress,
 }: ChatItemProps) => {
   const messageStatusProps = useMemo<{
     name: "checkmark-outline" | "checkmark-done-outline";
@@ -39,10 +41,7 @@ const ChatItem = ({
     }
   }, [status]);
   return (
-    <TouchableOpacity
-      activeOpacity={0.7}
-      onPress={() => console.log("pressed")}
-    >
+    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <View style={styles.container}>
         <Image
           source={{ uri: urlImage || "https://i.pravatar.cc/300" }}
