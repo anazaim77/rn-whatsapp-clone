@@ -1,5 +1,6 @@
 import { myColors } from "@/assets/themes";
 import { Typography } from "@/components";
+import ChatListPage from "@/pages/ChatListPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import React, { useState } from "react";
 import { Pressable, StyleSheet, View, useWindowDimensions } from "react-native";
@@ -7,25 +8,9 @@ import { SceneMap, TabView } from "react-native-tab-view";
 
 interface HomeTabViewProps {}
 
-const FirstRoute = () => (
-  <View style={{ flex: 1, backgroundColor: "#ff4081" }} />
-);
-
-const SecondRoute = () => (
-  <View style={{ flex: 1, backgroundColor: "#673ab7" }} />
-);
-
-const FirstRoute2 = () => (
-  <View style={{ flex: 1, backgroundColor: "#ff4081" }} />
-);
-
-const SecondRoutes = () => (
-  <View style={{ flex: 1, backgroundColor: "#673ab7" }} />
-);
-
 const renderScene = SceneMap({
   camera: NotFoundPage,
-  chats: SecondRoute,
+  chats: ChatListPage,
   status: NotFoundPage,
   calls: NotFoundPage,
 });
