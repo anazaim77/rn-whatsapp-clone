@@ -1,12 +1,12 @@
 import { myColors } from "@/assets/themes";
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import Typography from "../Typography";
-import StatusIcon from "../StatusIcon";
 import { StyleUtils } from "@/utils";
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import StatusIcon from "../StatusIcon";
+import Typography from "../Typography";
 
 interface ChatBubbleProps {
-  type: "send" | "accept";
+  type: "send" | "accept" | string;
   children: React.ReactNode;
 }
 

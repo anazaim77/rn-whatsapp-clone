@@ -3,13 +3,19 @@ import { StyleUtils } from "@/utils";
 import Feather from "@expo/vector-icons/Feather";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { Pressable, StyleSheet, TextInput, View } from "react-native";
 
-interface TextInputSectionProps {}
+interface TextInputSectionProps {
+  text: string;
+  onChangeText: (text: string) => void;
+  onSubmitText: () => void;
+}
 
-const TextInputSection = (props: TextInputSectionProps) => {
-  const [text, onChangeText] = React.useState("");
-
+const TextInputSection = ({
+  text,
+  onChangeText,
+  onSubmitText,
+}: TextInputSectionProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.boxInput}>
@@ -23,11 +29,14 @@ const TextInputSection = (props: TextInputSectionProps) => {
           style={styles.input}
           onChangeText={onChangeText}
           value={text}
+          onEndEditing={onSubmitText}
         />
       </View>
-      <View style={styles.boxMic}>
-        <Feather name="send" size={24} color={myColors.neutral.N0} />
-      </View>
+      <Pressable onPress={onSubmitText}>
+        <View style={styles.boxMic}>
+          <Feather name="send" size={24} color={myColors.neutral.N0} />
+        </View>
+      </Pressable>
     </View>
   );
 };
