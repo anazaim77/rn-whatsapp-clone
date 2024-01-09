@@ -1,12 +1,43 @@
 import { myColors } from "@/assets/themes";
 import { Badge, Typography } from "@/components";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import React from "react";
+import React, { useMemo } from "react";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 
-interface ChatItemProps {}
+interface ChatItemProps {
+  name: string;
+  message?: string;
+  status?: "read" | "unread" | "sent" | "delivered" | string;
+  totalUnread?: number;
+  time?: string;
+  urlImage?: string;
+}
 
-const ChatItem = (props: ChatItemProps) => {
+const ChatItem = ({
+  name,
+  status = "delivered",
+  message,
+  time,
+  urlImage,
+  totalUnread,
+}: ChatItemProps) => {
+  const messageStatusProps = useMemo<{
+    name: "checkmark-outline" | "checkmark-done-outline";
+  }>(() => {
+    switch (status) {
+      case "unread":
+        return { name: "checkmark-outline", size: 0 };
+      case "sent":
+        return { name: "checkmark-outline" };
+      case "delivered":
+        return { name: "checkmark-done-outline" };
+      case "read":
+        return { name: "checkmark-done-outline", color: "#39AACC" };
+
+      default:
+        return { name: "checkmark-outline", size: 0 };
+    }
+  }, [status]);
   return (
     <TouchableOpacity
       activeOpacity={0.7}
@@ -14,7 +45,7 @@ const ChatItem = (props: ChatItemProps) => {
     >
       <View style={styles.container}>
         <Image
-          source={{ uri: "https://i.pravatar.cc/300" }}
+          source={{ uri: urlImage || "https://i.pravatar.cc/300" }}
           style={styles.image}
         />
         <View style={styles.textContainer}>
@@ -24,22 +55,22 @@ const ChatItem = (props: ChatItemProps) => {
               fontSize={16}
               color={myColors.neutral.N800}
             >
-              Name
+              {name}
             </Typography>
-            <Typography color={myColors.neutral.N800}>10.22</Typography>
+            <Typography color={myColors.neutral.N800}>{time}</Typography>
           </View>
           <View style={styles.nameBox}>
             <View style={styles.messageBox}>
               <Ionicons
-                name={"checkmark-done-outline"}
                 size={20}
                 color={myColors.neutral.N500}
+                {...messageStatusProps}
               />
               <Typography fontSize={13} color={myColors.neutral.N300}>
-                Message
+                {message}
               </Typography>
             </View>
-            <Badge text="12" />
+            {totalUnread ? <Badge text={totalUnread?.toString()} /> : null}
           </View>
         </View>
       </View>

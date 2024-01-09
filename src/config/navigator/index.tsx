@@ -3,12 +3,16 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList } from "./types";
 import { HomePage, LoginPage, OnboardingPage } from "@/pages";
 import NotFoundPage from "@/pages/NotFoundPage";
+import { QueryClientProvider } from "react-query";
+import { reactQueryClient } from "../services/QueryClient";
 
 export default function Navigation() {
   return (
-    <NavigationContainer>
-      <RootNavigator />
-    </NavigationContainer>
+    <QueryClientProvider client={reactQueryClient}>
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 }
 
